@@ -336,42 +336,49 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const progressBar = document.getElementById("progressBar");
-        const currentAmount = document.getElementById("currentAmount");
+  document.addEventListener("DOMContentLoaded", function () {
+    const progressBar = document.getElementById("progressBar");
+    const currentAmount = document.getElementById("currentAmount");
 
-        // Calculate percentage
-        const totalAmount = 7500000;
-        const raisedAmount = 113500;
-        const percentage = (raisedAmount / totalAmount) * 100;
+    // Set initial values
+    const totalAmount = 7500000;
+    let raisedAmount = 113500; // Initial raised amount; this can be updated
 
-        // Animate progress bar
-        setTimeout(() => {
-          progressBar.style.width = percentage + "%";
-        }, 500);
+    // Function to update progress bar and displayed amount
+    function updateProgress() {
+      const percentage = (raisedAmount / totalAmount) * 100;
+      progressBar.style.width = percentage + "%";
+      
+      // Format number with commas
+      function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      
+      // Update current amount with animation
+      let startAmount = parseFloat(currentAmount.textContent.replace(/,/g, '')) || 0;
+      const duration = 1500;
+      const framesPerSecond = 60;
+      const incrementPerFrame = (raisedAmount - startAmount) / ((duration / 1000) * framesPerSecond);
 
-        // Format number with commas
-        function formatNumber(num) {
-          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const animateAmount = () => {
+        startAmount += incrementPerFrame;
+        if (startAmount <= raisedAmount) {
+          currentAmount.textContent = formatNumber(Math.round(startAmount));
+          requestAnimationFrame(animateAmount);
+        } else {
+          currentAmount.textContent = formatNumber(raisedAmount);
         }
+      };
+      requestAnimationFrame(animateAmount);
+    }
 
-        // Update current amount with animation
-        let startAmount = 0;
-        const duration = 1500;
-        const framesPerSecond = 60;
-        const incrementPerFrame =
-          raisedAmount / ((duration / 1000) * framesPerSecond);
+    // Initial call to set progress
+    updateProgress();
 
-        const updateAmount = () => {
-          startAmount += incrementPerFrame;
-          if (startAmount <= raisedAmount) {
-            currentAmount.textContent = formatNumber(Math.round(startAmount));
-            requestAnimationFrame(updateAmount);
-          }
-        };
-
-        requestAnimationFrame(updateAmount);
-      });
-    </script>
+    // Example of updating the raisedAmount variable dynamically
+    // raisedAmount = 500000;  // Change this value as needed
+    // updateProgress();  // Call this function again to update display
+  });
+</script>
   </body>
 </html>
