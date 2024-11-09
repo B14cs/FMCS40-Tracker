@@ -29,10 +29,10 @@
       }
 
       :root {
-        --primary-green: #A9DDDB;
-        --primary-red: #E13D3E;
+        --primary-green: #a9dddb;
+        --primary-red: #e13d3e;
         --accent-green: #488259;
-        --light-blue: #AABADC;
+        --light-blue: #aabadc;
       }
 
       body {
@@ -62,24 +62,31 @@
 
       .header {
         background-color: var(--primary-green);
-        padding: 1.5rem;
+        padding: 1.5rem 2rem;
         text-align: center;
         position: relative;
+      }
+
+      .header h1,
+      .header h2 {
+        white-space: nowrap; /* Prevent line wrapping */
+        overflow: hidden; /* Prevent overflow outside the container */
+        padding-right: 5rem; /* Add space for logo */
       }
 
       .header h1 {
         font-weight: bold;
         margin-top: 0.5rem;
-        font-size: 1.65rem;
-        margin-right: 5rem;
+        font-size: 1.75rem;
+        padding-right: 7rem;
         color: #305857;
       }
 
       .header h2 {
         font-weight: normal;
         margin-top: -0.5rem;
-        font-size: 1.3rem;
-        margin-right: 5rem;
+        font-size: 1.4rem;
+        padding-right: 7rem;
         color: #305857;
       }
 
@@ -172,7 +179,7 @@
 
       .donation-info {
         background-color: var(--light-blue);
-        color: #182F5B;
+        color: #182f5b;
         /* background-color: #f8f9fa; */
         padding: 2rem 1.5rem;
         text-align: center;
@@ -199,14 +206,14 @@
         padding: 1rem;
         /* background-color: var(--light-blue); */
         background: white;
-        color: #182F5B;
+        color: #182f5b;
         text-align: center;
         line-height: 1.6;
       }
 
       .note {
         font-size: 1.1rem;
-        color: #182F5B;
+        color: #182f5b;
         margin-top: 1rem;
         line-height: 1.4;
         /* text-align: right; */
@@ -223,6 +230,23 @@
       }
 
       @media (max-width: 480px) {
+        .header h1 {
+          font-size: 1rem; /* Smaller font size for mobile */
+          padding-right: 4rem; /* Adjust padding to fit logo */
+        }
+
+        .header h2 {
+          font-size: 0.9rem; /* Smaller font size for mobile */
+          padding-right: 4rem; /* Adjust padding to fit logo */
+        }
+
+        .logo {
+          width: 40px; /* Smaller logo on mobile */
+          height: 40px;
+          top: 50%;
+          transform: translateY(-50%); /* Center vertically */
+        }
+
         .student-count {
           font-size: 8rem; /* Adjusted for mobile */
         }
@@ -282,7 +306,10 @@
         </div>
         <div class="note">
           <p>ملاحظة:</p>
-          <p>المبلغ المطلوب هو الحد الأدنى، وقد يزيد حسب عدد الطلاب أو تكلفة المواصلات والسكن</p>
+          <p>
+            المبلغ المطلوب هو الحد الأدنى، وقد يزيد حسب عدد الطلاب أو تكلفة
+            المواصلات والسكن
+          </p>
         </div>
       </div>
 
