@@ -359,8 +359,8 @@
       const currentPercentage = targetPercentage * progress;
 
       // Display the current amount and update progress bar width
-      currentAmount.textContent = formatNumber(Math.round(currentAmountValue));
       progressBar.style.width = `${currentPercentage}%`;
+      currentAmount.textContent = formatNumber(Math.round(currentAmountValue));
 
       // Continue animating until the end of the duration
       if (progress < 1) {
