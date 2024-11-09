@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مبادرة دعم الطلاب</title>
+    <style>
+      @font-face {
+        font-family: "FFShamelFamily";
+        src: url("Assets/Font/ArbFONTS-FFShamelFamily-SansOneBold.ttf")
+          format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "FFShamelFamily";
+        src: url("Assets/Font/ArbFONTS-FFShamelFamily-SansOneBold.ttf")
+          format("truetype");
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "FFShamelFamily", system-ui, -apple-system, sans-serif;
+      }
+
+      :root {
+        --primary-green: #A9DDDB;
+        --primary-red: #E13D3E;
+        --accent-green: #488259;
+        --light-blue: #AABADC;
+      }
+
+      body {
+        background-color: #f0f9f9;
+        background-image: url("Assets/Background.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        font-feature-settings: "kern" 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        background: white;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        background-color: var(--primary-green);
+        padding: 1.5rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .header h1 {
+        font-weight: bold;
+        margin-top: 0.5rem;
+        font-size: 1.65rem;
+        margin-right: 5rem;
+        color: #305857;
+      }
+
+      .header h2 {
+        font-weight: normal;
+        margin-top: -0.5rem;
+        font-size: 1.3rem;
+        margin-right: 5rem;
+        color: #305857;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+      }
+
+      .main-content {
+        background-color: var(--primary-red);
+        color: white;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0rem;
+      }
+
+      .support-text {
+        font-size: 2rem;
+      }
+
+      .students-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0; /* Removed gap to bring elements closer */
+      }
+
+      .student-count {
+        font-size: 15rem;
+        font-weight: bold;
+        line-height: 0.8; /* Decreased line height to reduce space */
+        margin: 0; /* Removed margin */
+        margin-top: 3rem;
+      }
+
+      .students-text {
+        font-size: 1.8rem;
+        margin-top: -2.5rem; /* Added negative margin to pull text up */
+        margin-bottom: 0.5rem;
+      }
+
+      .goal-text {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        margin-top: 0rem; /* Added some space between this and the elements above */
+      }
+
+      .amount-section {
+        background-color: var(--primary-green);
+        color: #2f5856;
+        /* background-color: var(--light-blue); */
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+
+      .amount-section h3 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #2f5856;
+      }
+
+      .total-amount {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2f5856;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .progress-container {
+        background-color: #e0e0e0;
+        height: 25px;
+        border-radius: 2.5px;
+        margin: 1.5rem 0;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        width: 1.5%;
+        height: 100%;
+        background-color: var(--accent-green);
+        transition: width 1.5s ease-in-out;
+      }
+
+      .donation-info {
+        background-color: var(--light-blue);
+        color: #182F5B;
+        /* background-color: #f8f9fa; */
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+
+      .donation-info h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .bank-details {
+        font-size: 1.2rem;
+        /* background-color: var(--light-blue); */
+        /* background: white;
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        line-height: 1.6; */
+      }
+
+      .contact-section {
+        padding: 1rem;
+        /* background-color: var(--light-blue); */
+        background: white;
+        color: #182F5B;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .note {
+        font-size: 1.1rem;
+        color: #182F5B;
+        margin-top: 1rem;
+        line-height: 1.4;
+        /* text-align: right; */
+      }
+
+      /* Arabic text improvements */
+      p,
+      h1,
+      h2,
+      h3,
+      div {
+        letter-spacing: 0;
+        word-spacing: 0.05em;
+      }
+
+      @media (max-width: 480px) {
+        .student-count {
+          font-size: 8rem; /* Adjusted for mobile */
+        }
+
+        .students-text {
+          margin-top: -0.5rem; /* Adjusted negative margin for mobile */
+        }
+
+        .support-text {
+          font-size: 1.7rem;
+        }
+
+        .students-text {
+          font-size: 1.5rem;
+        }
+
+        .goal-text {
+          font-size: 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="Assets/FMCS Logo.png" alt="شعار الكلية" class="logo" />
+        <h1>كلية العلوم الرياضية والحاسوب</h1>
+        <h2>مبادرة دعم طلاب الدفعة 40 المعسرين</h2>
+      </header>
+
+      <div class="main-content">
+        <div class="support-text">ساهم في دعم</div>
+        <div class="students-container">
+          <div class="student-count">30</div>
+          <div class="students-text">طالب وطالبة</div>
+        </div>
+        <div class="goal-text">لإتمام امتحاناتهم النهائية</div>
+      </div>
+
+      <div class="amount-section">
+        <h3>إجمالي المبلغ المطلوب</h3>
+        <div class="total-amount">7,500,000 جنيه سوداني</div>
+        <p>تشمل رسوم الامتحانات الخاصة بالجامعة وتكاليف السفر والسكن</p>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div>تم جمع: <span id="currentAmount">113,500</span> جنيه</div>
+      </div>
+
+      <div class="donation-info">
+        <h3>ساهم الآن!</h3>
+        <div class="bank-details">
+          <p>حساب التبرع:</p>
+          <p>عبدالله عبدالباقي عبدالله صالح</p>
+          <p>3059384</p>
+        </div>
+        <div class="note">
+          <p>ملاحظة:</p>
+          <p>المبلغ المطلوب هو الحد الأدنى، وقد يزيد حسب عدد الطلاب أو تكلفة المواصلات والسكن</p>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <p>للتواصل أو الاستفسار: 5717 320 11 249+</p>
+        <p>للحوالات من خارج السودان، يرجى التواصل</p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const progressBar = document.getElementById("progressBar");
+        const currentAmount = document.getElementById("currentAmount");
+
+        // Calculate percentage
+        const totalAmount = 7500000;
+        const raisedAmount = 113500;
+        const percentage = (raisedAmount / totalAmount) * 100;
+
+        // Animate progress bar
+        setTimeout(() => {
+          progressBar.style.width = percentage + "%";
+        }, 500);
+
+        // Format number with commas
+        function formatNumber(num) {
+          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Update current amount with animation
+        let startAmount = 0;
+        const duration = 1500;
+        const framesPerSecond = 60;
+        const incrementPerFrame =
+          raisedAmount / ((duration / 1000) * framesPerSecond);
+
+        const updateAmount = () => {
+          startAmount += incrementPerFrame;
+          if (startAmount <= raisedAmount) {
+            currentAmount.textContent = formatNumber(Math.round(startAmount));
+            requestAnimationFrame(updateAmount);
+          }
+        };
+
+        requestAnimationFrame(updateAmount);
+      });
+    </script>
+  </body>
+</html>
