@@ -342,51 +342,70 @@
 
     // Set initial values
     const totalAmount = 7500000;
-    let raisedAmount = 3250000; // Initial raised amount; this can be updated
+    let raisedAmount = 113500; // Initial raised amount; this can be updated dynamically
 
     // Function to format numbers with commas
     function formatNumber(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    // Function to update progress bar and displayed amount with animation
-    function updateProgress() {
-      const targetPercentage = (raisedAmount / totalAmount) * 100;
-      
-      // Initialize values for animation
-      let currentPercentage = parseFloat(progressBar.style.width) || 0;
-      let startAmount = parseFloat(currentAmount.textContent.replace(/,/g, '')) || 0;
-      
-      const duration = 1500; // Animation duration in milliseconds
-      const framesPerSecond = 60;
-      const incrementPerFrameAmount = (raisedAmount - startAmount) / ((duration / 1000) * framesPerSecond);
-      const incrementPerFramePercentage = (targetPercentage - currentPercentage) / ((duration / 1000) * framesPerSecond);
+    // Animate the current amount display
+    function animateAmountDisplay() {
+      return new Promise((resolve) => {
+        let startAmount = parseFloat(currentAmount.textContent.replace(/,/g, '')) || 0;
+        const duration = 1500;
+        const framesPerSecond = 60;
+        const incrementPerFrame = (raisedAmount - startAmount) / ((duration / 1000) * framesPerSecond);
 
-      // Animate both the progress bar and the current amount
-      function animateProgress() {
-        startAmount += incrementPerFrameAmount;
-        currentPercentage += incrementPerFramePercentage;
+        function animateAmount() {
+          startAmount += incrementPerFrame;
 
-        // Update current amount and progress bar width
-        if (startAmount <= raisedAmount) {
-          currentAmount.textContent = formatNumber(Math.round(startAmount));
-          progressBar.style.width = `${Math.min(currentPercentage, targetPercentage)}%`; // Ensure it doesn't exceed the target
-          requestAnimationFrame(animateProgress);
-        } else {
-          currentAmount.textContent = formatNumber(raisedAmount);
-          progressBar.style.width = `${targetPercentage}%`; // Set to final target width
+          if (startAmount <= raisedAmount) {
+            currentAmount.textContent = formatNumber(Math.round(startAmount));
+            requestAnimationFrame(animateAmount);
+          } else {
+            currentAmount.textContent = formatNumber(raisedAmount);
+            resolve(); // Complete the animation
+          }
         }
-      }
 
-      requestAnimationFrame(animateProgress);
+        requestAnimationFrame(animateAmount);
+      });
     }
 
-    // Initial call to set progress
-    updateProgress();
+    // Animate the progress bar width
+    function animateProgressBar() {
+      return new Promise((resolve) => {
+        const targetPercentage = (raisedAmount / totalAmount) * 100;
+        let currentPercentage = parseFloat(progressBar.style.width) || 0;
+        const duration = 1500;
+        const framesPerSecond = 60;
+        const incrementPerFrame = (targetPercentage - currentPercentage) / ((duration / 1000) * framesPerSecond);
+
+        function animateProgress() {
+          currentPercentage += incrementPerFrame;
+
+          if (currentPercentage <= targetPercentage) {
+            progressBar.style.width = `${Math.min(currentPercentage, targetPercentage)}%`;
+            requestAnimationFrame(animateProgress);
+          } else {
+            progressBar.style.width = `${targetPercentage}%`;
+            resolve(); // Complete the animation
+          }
+        }
+
+        requestAnimationFrame(animateProgress);
+      });
+    }
+
+    // Run both animations in parallel
+    Promise.all([animateAmountDisplay(), animateProgressBar()]).then(() => {
+      console.log("Animations completed");
+    });
 
     // Example of updating the raisedAmount variable dynamically
-    // raisedAmount = 500000;  // Change this value as needed
-    // updateProgress();  // Call this function again to update display
+    // raisedAmount = 500000; // Change this value as needed
+    // Promise.all([animateAmountDisplay(), animateProgressBar()]); // Call again to animate
   });
 </script>
   </body>
