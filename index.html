@@ -341,31 +341,28 @@
     const currentAmount = document.getElementById("currentAmount");
 
     const totalAmount = 7500000;
-    const raisedAmount = 5000000; // Set the target amount you want to animate to
-
+    const raisedAmount = 5000000; // The target amount you want to animate to
     const duration = 1500; // Duration in milliseconds
-    const startAmount = 0;
-    const startPercentage = 0;
+
+    // Calculate the target percentage for the progress bar
     const targetPercentage = (raisedAmount / totalAmount) * 100;
 
     const startTime = performance.now();
 
     function animate(timestamp) {
-      // Calculate how much time has passed
+      // Calculate the elapsed time as a fraction of the total duration
       const elapsed = timestamp - startTime;
-
-      // Calculate the progress as a fraction of the total duration
       const progress = Math.min(elapsed / duration, 1);
 
-      // Calculate current animated values
-      const currentAmountValue = startAmount + progress * (raisedAmount - startAmount);
-      const currentPercentage = startPercentage + progress * (targetPercentage - startPercentage);
+      // Update current amount and progress bar width proportionally
+      const currentAmountValue = raisedAmount * progress;
+      const currentPercentage = targetPercentage * progress;
 
-      // Update display with animated values
+      // Display the current amount and update progress bar width
       currentAmount.textContent = formatNumber(Math.round(currentAmountValue));
       progressBar.style.width = `${currentPercentage}%`;
 
-      // Continue animating until reaching the end of the duration
+      // Continue animating until the end of the duration
       if (progress < 1) {
         requestAnimationFrame(animate);
       }
