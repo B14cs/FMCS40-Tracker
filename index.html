@@ -355,8 +355,8 @@
       const progress = Math.min(elapsed / duration, 1);
 
       // Update current amount and progress bar width proportionally
-      const currentAmountValue = raisedAmount * progress;
       const currentPercentage = targetPercentage * progress;
+      const currentAmountValue = raisedAmount * progress;
 
       // Display the current amount and update progress bar width
       progressBar.style.width = `${currentPercentage}%`;
