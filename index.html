@@ -302,7 +302,9 @@
         <div class="progress-container">
           <div class="progress-bar" id="progressBar"></div>
         </div>
-        <div class="collected">تم جمع: <span id="currentAmount">113,500</span> جنيه</div>
+        <div class="collected">
+          تم جمع: <span id="currentAmount">000,000</span> جنيه
+        </div>
       </div>
 
       <div class="donation-info">
@@ -340,37 +342,43 @@
         const progressBar = document.getElementById("progressBar");
         const currentAmount = document.getElementById("currentAmount");
 
-        // Calculate percentage
         const totalAmount = 7500000;
-        const raisedAmount = 113500;
-        const percentage = (raisedAmount / totalAmount) * 100;
+        const raisedAmount = 414900; // The target amount you want to animate to
+        const duration = 1500; // Duration in milliseconds
 
-        // Animate progress bar
-        setTimeout(() => {
-          progressBar.style.width = percentage + "%";
-        }, 500);
+        // Calculate the target percentage for the progress bar
+        const targetPercentage = (raisedAmount / totalAmount) * 100;
 
-        // Format number with commas
+        const startTime = performance.now();
+
+        function animate(timestamp) {
+          // Calculate the elapsed time as a fraction of the total duration
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Update current amount and progress bar width proportionally
+          const currentPercentage = targetPercentage * progress;
+          const currentAmountValue = raisedAmount * progress;
+
+          // Display the current amount and update progress bar width
+          progressBar.style.width = `${currentPercentage}%`;
+          currentAmount.textContent = formatNumber(
+            Math.round(currentAmountValue)
+          );
+
+          // Continue animating until the end of the duration
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        }
+
+        // Start the animation
+        requestAnimationFrame(animate);
+
+        // Helper function to format numbers with commas
         function formatNumber(num) {
           return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-
-        // Update current amount with animation
-        let startAmount = 0;
-        const duration = 1500;
-        const framesPerSecond = 60;
-        const incrementPerFrame =
-          raisedAmount / ((duration / 1000) * framesPerSecond);
-
-        const updateAmount = () => {
-          startAmount += incrementPerFrame;
-          if (startAmount <= raisedAmount) {
-            currentAmount.textContent = formatNumber(Math.round(startAmount));
-            requestAnimationFrame(updateAmount);
-          }
-        };
-
-        requestAnimationFrame(updateAmount);
       });
     </script>
   </body>
