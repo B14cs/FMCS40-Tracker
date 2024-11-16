@@ -176,13 +176,27 @@
         border-radius: 2.5px;
         margin: 1.5rem 0;
         overflow: hidden;
+        position: relative;
       }
 
       .progress-bar {
         width: 1.5%;
         height: 100%;
         background-color: var(--accent-green);
+        position: relative;
         transition: width 1.5s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .progress-text {
+        position: absolute;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        width: 100%; /* Ensure the text is centered within the progress bar */
       }
 
       .donation-info {
@@ -300,7 +314,9 @@
         <p>تشمل رسوم الامتحانات الخاصة بالجامعة وتكاليف السفر والسكن</p>
 
         <div class="progress-container">
-          <div class="progress-bar" id="progressBar"></div>
+          <div class="progress-bar" id="progressBar">
+            <span class="progress-text" id="progressText">0%</span>
+          </div>
         </div>
         <div class="collected">
           تم جمع: <span id="currentAmount">000,000</span> جنيه
@@ -338,12 +354,13 @@
     </div>
 
     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const progressBar = document.getElementById("progressBar");
-    const currentAmount = document.getElementById("currentAmount");
+      document.addEventListener("DOMContentLoaded", function () {
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
+        const currentAmount = document.getElementById("currentAmount");
 
         const totalAmount = 7500000;
-        const raisedAmount = 446000; // The target amount you want to animate to
+        const raisedAmount = 733500; // The target amount you want to animate to
         const duration = 1500; // Duration in milliseconds
 
         // Calculate the target percentage for the progress bar
@@ -360,8 +377,11 @@
           const currentPercentage = targetPercentage * progress;
           const currentAmountValue = raisedAmount * progress;
 
-          // Display the current amount and update progress bar width
+          // Update progress bar width and display the percentage inside it
           progressBar.style.width = `${currentPercentage}%`;
+          progressText.textContent = `${Math.round(currentPercentage)}%`;
+
+          // Update the collected amount
           currentAmount.textContent = formatNumber(
             Math.round(currentAmountValue)
           );
