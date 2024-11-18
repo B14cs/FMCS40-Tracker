@@ -425,6 +425,7 @@
           <div class="content">
             <p>شارك التبرع عبر وسائل التواصل الاجتماعي</p>
             <input
+              id="copy-text"
               type="text"
               value="https://b14cs.github.io/FMCS40-Tracker"
               readonly
@@ -462,6 +463,11 @@
     </div>
 
     <script>
+      document.getElementById("copy-text").onclick = function () {
+        this.select();
+        document.execCommand("copy");
+        alert("Copied.");
+      };
       const shareBtn = document.getElementById("shareBtn");
       const shareForm = document.getElementById("shareForm");
 
