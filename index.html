@@ -86,25 +86,24 @@
         display: flex;
         flex-direction: column;
         align-items: right;
-        gap: 0; /* Removed gap to bring elements closer */
+        gap: 0;
       }
 
       .student-count {
         font-size: 15rem;
         font-weight: bold;
-        line-height: 0.8; /* Decreased line height to reduce space */
+        line-height: 0.8;
         margin-top: 2rem;
         margin-right: -0.75rem;
       }
 
       .students-text {
         font-size: 2rem;
-        margin-top: -2.5rem; /* Added negative margin to pull text up */
+        margin-top: -2.5rem;
         margin-bottom: 0.5rem;
       }
 
       .batch-info {
-        /* background-color: var(--primary); */
         color: black;
         background-color: var(--primary);
         padding: 1rem 1.5rem;
@@ -121,7 +120,6 @@
       .amount-section {
         background-color: var(--primary);
         color: var(--green);
-        /* background-color: var(--light-blue); */
         padding: 0.5rem 1.5rem;
         text-align: center;
       }
@@ -198,7 +196,7 @@
         font-size: 1rem;
         font-weight: bold;
         text-align: center;
-        width: 100%; /* Ensure the text is centered within the progress bar */
+        width: 100%;
       }
 
       .donation-info {
@@ -221,7 +219,6 @@
         line-height: 1.4;
       }
 
-      /* Set a style for all buttons */
       button {
         background-color: var(--green);
         color: var(--primary);
@@ -252,7 +249,6 @@
         width: 90%;
         max-width: 400px;
         background-color: var(--primary-dark);
-        /* background: white; */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         padding: 20px;
@@ -292,7 +288,7 @@
         color: var(--blue);
         text-align: center;
         line-height: 1.6;
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
 
       /* Arabic text improvements */
@@ -306,34 +302,34 @@
       }
 
       @media (max-width: 480px) {
-        .header h1 {
-          font-size: 0.95rem; /* Smaller font size for mobile */
-          padding-right: 4rem; /* Adjust padding to fit logo */
+        /* .header h1 {
+          font-size: 0.95rem;
+          padding-right: 4rem;
         }
 
         .header h2 {
-          font-size: 0.75rem; /* Smaller font size for mobile */
-          padding-right: 4rem; /* Adjust padding to fit logo */
-        }
-
-        #shareForm h3 {
-          font-size: 0.75rem; /* Smaller font size for mobile */
-          padding-right: 4rem; /* Adjust padding to fit logo */
+          font-size: 0.75rem;
+          padding-right: 4rem;
         }
 
         .logo {
-          width: 65px; /* Smaller logo on mobile */
+          width: 65px;
           height: 65px;
           top: 50%;
-          transform: translateY(-50%); /* Center vertically */
+          transform: translateY(-50%);
+        } */
+
+        #shareForm h3 {
+          font-size: 0.75rem;
+          padding-right: 4rem;
         }
 
         .student-count {
-          font-size: 8rem; /* Adjusted for mobile */
+          font-size: 8rem;
         }
 
         .students-text {
-          margin-top: -0.5rem; /* Adjusted negative margin for mobile */
+          margin-top: -0.5rem;
         }
 
         .support-text {
@@ -341,11 +337,14 @@
         }
 
         .students-text {
-          font-size: 1.5rem;
+          font-size: 0.95rem;
         }
 
         .goal-text {
           font-size: 1.4rem;
+        }
+        .contact-section {
+          font-size: 1.1rem;
         }
       }
     </style>
@@ -409,6 +408,7 @@
         </div>
         <div class="note">
           <p>ملاحظة:</p>
+          <p>للحوالات من خارج السودان، يرجى التواصل.</p>
           <p>المبلغ المطلوب هو الحد الأدنى، وقد يزيد مع زيادة عدد الطلاب.</p>
         </div>
       </div>
@@ -468,7 +468,6 @@
             >5717 320 11 249+</a
           >
         </p>
-        <p>للحوالات من خارج السودان، يرجى التواصل</p>
       </div>
     </div>
 
@@ -511,7 +510,7 @@
         const remainAmount = document.getElementById("remainAmount");
 
         const totalAmount = 7500000;
-        const riyal = 450 * (560);
+        const riyal = 450 * 560;
         const s = 616500;
         const raisedAmount = riyal + s; // The target amount you want to animate to
         const remainRaisedAmount = totalAmount - raisedAmount; // The target amount you want to animate to
