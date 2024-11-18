@@ -29,14 +29,16 @@
       }
 
       :root {
-        --primary-green: #a9dddb;
+        --primary: #f7f7f7;
+        --primary-dark: #e0e0e0;
         --primary-red: #e13d3e;
-        --accent-green: #488259;
-        --light-blue: #aabadc;
+        --green: #0d8f75;
+        --dark-green: #2f5856;
+        --blue: #214570;
       }
 
       body {
-        background-color: #f0f9f9;
+        background-color: var(--primary);
         background-image: url("Assets/Background.png");
         background-position: center;
         background-repeat: no-repeat;
@@ -52,7 +54,7 @@
       }
 
       .container {
-        background: white;
+        background: var(--primary);
         max-width: 600px;
         width: 100%;
         border-radius: 15px;
@@ -61,7 +63,7 @@
       }
 
       .header {
-        background-color: var(--primary-green);
+        background-color: var(--green);
         padding: 1.5rem 2rem;
         text-align: center;
         position: relative;
@@ -79,7 +81,7 @@
         margin-top: 0.5rem;
         font-size: 1.75rem;
         padding-right: 7rem;
-        color: #305857;
+        color: var(--green);
       }
 
       .header h2 {
@@ -87,7 +89,7 @@
         margin-top: -0.5rem;
         font-size: 1.4rem;
         padding-right: 7rem;
-        color: #305857;
+        color: var(--green);
       }
 
       .logo {
@@ -99,24 +101,29 @@
       }
 
       .main-content {
-        background-color: var(--primary-red);
-        color: white;
+        background-color: var(--green);
+        background-image: url("Assets/graduation student.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: var(--primary);
         padding: 2rem 1.5rem;
-        text-align: center;
+        text-align: right;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: right;
         gap: 0rem;
       }
 
       .support-text {
+        font-weight: bold;
         font-size: 2rem;
       }
 
       .students-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: right;
         gap: 0; /* Removed gap to bring elements closer */
       }
 
@@ -124,12 +131,12 @@
         font-size: 15rem;
         font-weight: bold;
         line-height: 0.8; /* Decreased line height to reduce space */
-        margin: 0; /* Removed margin */
-        margin-top: 3rem;
+        margin-top: 2rem;
+        margin-right: -0.75rem;
       }
 
       .students-text {
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-top: -2.5rem; /* Added negative margin to pull text up */
         margin-bottom: 0.5rem;
       }
@@ -140,41 +147,80 @@
         margin-top: 0rem; /* Added some space between this and the elements above */
       }
 
+      .batch-info {
+        /* background-color: var(--primary); */
+        color: black;
+        background-color: var(--primary);
+        padding: 1rem 2rem;
+        text-align: justify;
+        font-size: 0.9rem;
+      }
+
+      .batch-info .title {
+        color: var(--blue);
+        text-align: right;
+        font-size: 1.1rem;
+      }
+
       .amount-section {
-        background-color: var(--primary-green);
-        color: #2f5856;
+        background-color: var(--primary);
+        color: var(--green);
         /* background-color: var(--light-blue); */
-        padding: 2rem 1.5rem;
+        padding: 0.5rem 2rem;
         text-align: center;
       }
 
       .amount-section h3 {
         font-weight: bold;
         margin-bottom: 1rem;
-        color: #2f5856;
+        color: var(--green);
       }
 
       .total-amount {
         font-size: 2.5rem;
         font-weight: bold;
-        color: #2f5856;
+        color: var(--green);
         margin-bottom: 1rem;
         line-height: 1.2;
+      }
+
+      .calculationTitles {
+        padding-top: 0rem;
+        padding-left: 0.35rem;
+        display: flex;
+        justify-content: space-between;
+        color: var(--green);
+      }
+
+      .calculation {
+        display: flex;
+        justify-content: space-between;
       }
 
       .collected {
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: bold;
-        color: #2f5856;
+        color: var(--dark-green);
+        margin-right: 1rm;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+        text-align: right;
+      }
+      .remain {
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--dark-green);
+        margin-right: 20px;
         margin-bottom: 1rem;
         line-height: 1.2;
+        text-align: right;
       }
 
       .progress-container {
-        background-color: #e0e0e0;
-        height: 25px;
-        border-radius: 2.5px;
-        margin: 1.5rem 0;
+        background-color: var(--primary-dark);
+        height: 2rem;
+        border-radius: 0.25rem;
+        margin: 0.5rem 0;
         overflow: hidden;
         position: relative;
       }
@@ -182,7 +228,7 @@
       .progress-bar {
         width: 1.5%;
         height: 100%;
-        background-color: var(--accent-green);
+        background-color: var(--green);
         position: relative;
         transition: width 1.5s ease-in-out;
         display: flex;
@@ -200,45 +246,97 @@
       }
 
       .donation-info {
-        background-color: var(--light-blue);
-        color: #182f5b;
-        /* background-color: #f8f9fa; */
-        padding: 2rem 1.5rem;
-        text-align: center;
-      }
-
-      .donation-info h3 {
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
+        background-color: var(--primary);
+        color: var(--blue);
+        padding: 0.5rem 2rem;
+        text-align: justify;
+        font-size: 1rem;
       }
 
       .bank-details {
-        font-size: 1.2rem;
-        /* background-color: var(--light-blue); */
-        /* background: white;
-        margin: 1rem 0;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        line-height: 1.6; */
-      }
-
-      .contact-section {
-        padding: 1rem;
-        /* background-color: var(--light-blue); */
-        background: white;
-        color: #182f5b;
+        color: var(--green);
+        font-size: 1.4rem;
+        font-weight: bold;
         text-align: center;
-        line-height: 1.6;
       }
 
       .note {
-        font-size: 1.1rem;
-        color: #182f5b;
         margin-top: 1rem;
         line-height: 1.4;
-        /* text-align: right; */
+      }
+
+      /* Set a style for all buttons */
+      button {
+        background-color: var(--green);
+        color: var(--primary);
+        padding: 0.75rem;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 0.5rem;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      .share {
+        background-color: var(--primary);
+        color: var(--green);
+        padding: 0.5rem 2.5rem;
+        align-items: center;
+      }
+
+      #shareForm {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
+        background-color: var(--primary-dark);
+        /* background: white; */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+      }
+      #shareForm .headerPic {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+      #shareForm .content {
+        margin-top: 1rem;
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #shareForm .content p {
+        font-weight: normal;
+        font-size: 1rem;
+        color: var(--green);
+        margin-bottom: 0.5rem;
+      }
+      #shareForm .content input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--primary);
+        border: 0.5rem solid #ddd;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .contact-section {
+        background-color: var(--primary);
+        padding: 1rem 2rem;
+        color: var(--blue);
+        text-align: center;
+        line-height: 1.6;
+        font-size: 1rem;
       }
 
       /* Arabic text improvements */
@@ -258,6 +356,11 @@
         }
 
         .header h2 {
+          font-size: 0.75rem; /* Smaller font size for mobile */
+          padding-right: 4rem; /* Adjust padding to fit logo */
+        }
+
+        #shareForm h3 {
           font-size: 0.75rem; /* Smaller font size for mobile */
           padding-right: 4rem; /* Adjust padding to fit logo */
         }
@@ -293,11 +396,11 @@
   </head>
   <body>
     <div class="container">
-      <header class="header">
+      <!-- <header class="header">
         <img src="Assets/FMCS Logo.png" alt="شعار الكلية" class="logo" />
         <h1>كلية العلوم الرياضية والحاسوب</h1>
         <h2>مبادرة دعم طلاب الدفعة 40 المعسرين</h2>
-      </header>
+      </header> -->
 
       <div class="main-content">
         <div class="support-text">ساهم في دعم</div>
@@ -308,34 +411,83 @@
         <div class="goal-text">لإتمام امتحاناتهم النهائية</div>
       </div>
 
+      <div class="batch-info">
+        <p class="title">مبادرة دعم طلاب الدفعة 40</p>
+        <p>
+          يسعى المشروع لإعانة المتعففين من طلاب الدفعة 40 في كلية العلوم
+          الرياضية والحاسوب على إتمام امتحاناتهم النهائية. تبرع لهم وكن يداً
+          محسنة تذلل صعابهم. قال رسول الله ﷺ: "المؤمن للمؤمن كالبنيان يشد بعضه
+          بعضاً".
+        </p>
+      </div>
+
       <div class="amount-section">
-        <h3>إجمالي المبلغ المطلوب</h3>
+        <!-- <h3>إجمالي المبلغ المطلوب</h3>
         <div class="total-amount">7,500,000 جنيه سوداني</div>
-        <p>تشمل رسوم الامتحانات الخاصة بالجامعة وتكاليف السفر والسكن</p>
+        <p>تشمل رسوم الامتحانات الخاصة بالجامعة وتكاليف السفر والسكن</p> -->
+
+        <div class="calculationTitles">
+          <div>تم جمع:</div>
+          <div>المبلغ المتبقي:</div>
+        </div>
+        <div class="calculation">
+          <div class="collected">
+            <span id="currentAmount">000,000</span> ج.س
+          </div>
+          <div class="remain"><span id="remainAmount">000,000</span> ج.س</div>
+        </div>
 
         <div class="progress-container">
           <div class="progress-bar" id="progressBar">
             <span class="progress-text" id="progressText">0%</span>
           </div>
         </div>
-        <div class="collected">
-          تم جمع: <span id="currentAmount">000,000</span> جنيه
-        </div>
       </div>
 
       <div class="donation-info">
-        <h3>ساهم الآن!</h3>
+        <!-- <h3>ساهم الآن!</h3> -->
+        <h3>حساب التبرع:</h3>
         <div class="bank-details">
-          <p>حساب التبرع:</p>
           <p>عبدالله عبدالباقي عبدالله صالح</p>
           <p>3059384</p>
         </div>
         <div class="note">
           <p>ملاحظة:</p>
-          <p>
-            المبلغ المطلوب هو الحد الأدنى، وقد يزيد حسب عدد الطلاب أو تكلفة
-            المواصلات والسكن
-          </p>
+          <p>المبلغ المطلوب هو الحد الأدنى، وقد يزيد مع زيادة عدد الطلاب.</p>
+        </div>
+      </div>
+
+      <div class="share">
+        <button id="shareBtn" title="شارك التبرع عبر وسائل التواصل الاجتماعي">
+          مشاركة
+        </button>
+
+        <div id="shareForm">
+          <div class="headerPic">
+            <img src="Assets/Share.png" alt="Share" />
+          </div>
+          <div class="content">
+            <p>شارك التبرع عبر وسائل التواصل الاجتماعي</p>
+            <input
+              type="text"
+              value="https://b14cs.github.io/FMCS40-Tracker"
+              readonly
+            />
+            <div class="social">
+              <a href="#" style="margin-right: 10px"
+                ><img
+                  src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                  alt="Facebook"
+                  width="30"
+              /></a>
+              <a href="#"
+                ><img
+                  src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png"
+                  alt="WhatsApp"
+                  width="30"
+              /></a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -354,13 +506,33 @@
     </div>
 
     <script>
+      const shareBtn = document.getElementById("shareBtn");
+      const shareForm = document.getElementById("shareForm");
+
+      shareBtn.addEventListener("click", () => {
+        shareForm.style.display = "block";
+      });
+
+      // Close the form when clicking outside of it
+      document.addEventListener("click", (event) => {
+        if (!shareForm.contains(event.target) && event.target !== shareBtn) {
+          shareForm.style.display = "none";
+        }
+      });
+
+      function closeForm() {
+        shareForm.style.display = "none";
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         const progressBar = document.getElementById("progressBar");
         const progressText = document.getElementById("progressText");
         const currentAmount = document.getElementById("currentAmount");
+        const remainAmount = document.getElementById("remainAmount");
 
         const totalAmount = 7500000;
-        const raisedAmount = 733500; // The target amount you want to animate to
+        const raisedAmount = 818500; // The target amount you want to animate to
+        const remainRaisedAmount = totalAmount - raisedAmount; // The target amount you want to animate to
         const duration = 1500; // Duration in milliseconds
 
         // Calculate the target percentage for the progress bar
@@ -376,6 +548,7 @@
           // Update current amount and progress bar width proportionally
           const currentPercentage = targetPercentage * progress;
           const currentAmountValue = raisedAmount * progress;
+          const remainAmountValue = remainRaisedAmount * progress;
 
           // Update progress bar width and display the percentage inside it
           progressBar.style.width = `${currentPercentage}%`;
@@ -384,6 +557,10 @@
           // Update the collected amount
           currentAmount.textContent = formatNumber(
             Math.round(currentAmountValue)
+          );
+          // Update the remain amount
+          remainAmount.textContent = formatNumber(
+            Math.round(remainAmountValue)
           );
 
           // Continue animating until the end of the duration
