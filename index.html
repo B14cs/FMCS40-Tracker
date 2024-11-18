@@ -430,6 +430,16 @@
               value="https://b14cs.github.io/FMCS40-Tracker"
               readonly
             />
+            <div
+              id="alert-message"
+              style="
+                display: none;
+                background-color: #e0e0e0;
+                padding: 0.25rem 2rem;
+              "
+            >
+              Copied
+            </div>
             <div class="social">
               <a href="#" style="margin-right: 10px"
                 ><img
@@ -466,7 +476,15 @@
       document.getElementById("copy-text").onclick = function () {
         this.select();
         document.execCommand("copy");
-        alert("Copied.");
+
+        // Show a custom alert message
+        const alertMessage = document.getElementById("alert-message");
+        alertMessage.style.display = "block";
+
+        // Hide the alert after 3 seconds
+        setTimeout(() => {
+          alertMessage.style.display = "none";
+        }, 3000);
       };
       const shareBtn = document.getElementById("shareBtn");
       const shareForm = document.getElementById("shareForm");
